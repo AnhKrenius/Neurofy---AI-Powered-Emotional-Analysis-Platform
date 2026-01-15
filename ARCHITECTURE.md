@@ -9,11 +9,11 @@ Neurofy is built on a modern, scalable architecture that separates concerns betw
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                        Client Layer                         │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐    │
-│  │   Web App    │  │  Mobile Web  │  │   Admin      │    │
-│  │  (Next.js)   │  │  (Responsive)│  │  Dashboard   │    │
-│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘    │
-└─────────┼──────────────────┼──────────────────┼────────────┘
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │
+│  │   Web App    │  │  Mobile Web  │  │   Admin      │       │
+│  │  (Next.js)   │  │  (Responsive)│  │  Dashboard   │       │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘       │
+└─────────┼──────────────────┼──────────────────┼─────────────┘
           │                  │                  │
           └──────────────────┼──────────────────┘
                              │
@@ -87,69 +87,6 @@ backend/
 │   └── utils/          # Helper functions
 ```
 
-**API Endpoints**:
-- `POST /process_review_video` - Process campaign response videos
-- `POST /analyze_video_advanced` - Advanced video analysis
-- `GET /campaigns` - Campaign management
-- `POST /send_invitation` - Send participant invitations
-
-### AI/ML Pipeline
-
-#### 1. Vision Analysis (Facial Expression)
-```
-Video Input
-    ↓
-Frame Extraction (10 fps)
-    ↓
-MediaPipe Face Detection
-    ↓
-Face Cropping (Largest Face)
-    ↓
-ViT Model (Emotion Recognition)
-    ↓
-Temporal Smoothing (EMA)
-    ↓
-Emotion Scores (7 emotions)
-```
-
-#### 2. Speech Analysis (Text Sentiment)
-```
-Video Input
-    ↓
-Audio Extraction (WAV)
-    ↓
-Whisper Transcription
-    ↓
-Text Tokenization
-    ↓
-BERT-based Emotion Model
-    ↓
-Emotion Scores (7 emotions)
-```
-
-#### 3. Tone Analysis (Audio Features)
-```
-Video Input
-    ↓
-Audio Extraction (WAV)
-    ↓
-Feature Extraction (librosa)
-    - ZCR, Chroma, MFCC, RMS, MelSpectrogram
-    ↓
-CNN-based Emotion Model
-    ↓
-Emotion Scores (7 emotions)
-```
-
-#### 4. Fusion
-```
-Vision (40%) + Speech (35%) + Tone (25%)
-    ↓
-Weighted Average
-    ↓
-Final Emotion Scores
-```
-
 ## Data Flow
 
 ### Campaign Creation Flow
@@ -173,52 +110,6 @@ Email Invitation → Participant → Video Recording
                               Dashboard Update
 ```
 
-## Database Schema
-
-### Firebase Firestore Collections
-
-**Campaigns**
-```typescript
-{
-  id: string
-  userId: string
-  title: string
-  videoUrl: string
-  createdAt: timestamp
-  status: 'active' | 'completed'
-  participants: number
-}
-```
-
-**Responses**
-```typescript
-{
-  id: string
-  campaignId: string
-  participantId: string
-  videoUrl: string
-  emotions: {
-    vision: EmotionScores
-    speech: EmotionScores
-    tone: EmotionScores
-    combined: EmotionScores
-  }
-  timestamp: timestamp
-}
-```
-
-**UserSubscriptions**
-```typescript
-{
-  userId: string
-  planId: string
-  planName: string
-  projectsUsed: number
-  projectsLimit: number
-  expiresAt: timestamp
-}
-```
-
 ## Security Architecture
 
 - **Authentication**: Firebase Auth (JWT tokens)
@@ -235,9 +126,7 @@ Email Invitation → Participant → Video Recording
 - **Build**: Next.js static generation + SSR
 
 ### Backend
-- **Platform**: Fly.io / Render
-- **Container**: Docker
-- **Scaling**: Horizontal auto-scaling
+- **Platform**: Google Cloud Platform
 - **Load Balancing**: Platform-managed
 
 ### Infrastructure
@@ -253,14 +142,6 @@ Email Invitation → Participant → Video Recording
 3. **Caching**: Firebase caching for frequently accessed data
 4. **CDN**: Static assets served via CDN
 5. **Database Indexing**: Optimized Firestore queries
-
-## Scalability Considerations
-
-- **Horizontal Scaling**: Stateless backend services
-- **Database**: Firestore auto-scaling
-- **Storage**: S3 unlimited capacity
-- **Processing**: Queue-based video processing
-- **Caching**: Multi-layer caching strategy
 
 ## Monitoring & Logging
 
