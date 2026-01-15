@@ -105,7 +105,7 @@ For detailed architecture documentation, see [ARCHITECTURE.md](ARCHITECTURE.md)
 - **Authentication**: Firebase Auth
 - **Storage**: AWS S3
 - **Email**: AWS SES / SendGrid
-- **Deployment**: Vercel (Frontend), Fly.io / Render (Backend)
+- **Deployment**: Vercel (Frontend), GCP (Backend)
 
 For complete technology details, see [TECH_STACK.md](TECH_STACK.md)
 
