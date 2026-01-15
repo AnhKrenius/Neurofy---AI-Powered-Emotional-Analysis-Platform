@@ -18,6 +18,22 @@ Neurofy is an advanced neuromarketing platform that uses cutting-edge AI to anal
 
 **Live Demo**: [www.neurofy.com.au](https://www.neurofy.com.au)
 
+## 🎯 Problem Statement
+
+Traditional qualitative research methods such as focus groups:
+  - Rely on small sample sizes
+  - Capture self-reported, post-hoc feedback
+  - Require significant time and operational cost
+As video-based advertising continues to scale across digital platforms, brands need a way to measure emotional response objectively, consistently, and at scale.
+
+## 💡 Solution
+
+Neurofy applies AI-driven emotional analysis to video content, enabling brands to:
+  - Measure emotional engagement across key moments in a video
+  - Compare creative variations before campaign launch
+  - Understand audience reactions without organizing in-person research sessions
+The platform is built for speed, scalability, and repeatable analysis.
+
 ## ✨ Key Features
 
 ### 🎭 Multimodal Emotion Analysis
@@ -77,12 +93,12 @@ For detailed architecture documentation, see [ARCHITECTURE.md](ARCHITECTURE.md)
 ### Backend
 - **Framework**: FastAPI (Python)
 - **AI/ML**: 
-  - Vision Transformer (ViT) for facial emotion recognition
-  - BERT-based models for text sentiment analysis
-  - CNN models for audio emotion recognition
-  - Whisper for speech-to-text transcription
-- **Computer Vision**: MediaPipe for face detection
-- **Audio Processing**: librosa for feature extraction
+  - CNN-based computer vision models for facial emotion analysis
+  - Transformer-based NLP models for sentiment and semantic analysis
+  - Deep learning models for audio-based emotion recognition
+  - Automated speech transcription for text-based analysis
+ This system required cross-domain expertise in computer vision, natural language processing, audio analysis, and applied machine learning.
+
 
 ### Infrastructure
 - **Database**: Firebase Firestore
