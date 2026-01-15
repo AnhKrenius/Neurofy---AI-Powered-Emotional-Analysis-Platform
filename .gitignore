@@ -1,0 +1,93 @@
+# Source Code - EXCLUDE ALL
+backend2/
+frontend3/
+model_research/
+*.py
+*.tsx
+*.ts
+*.js
+*.jsx
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!next.config.mjs
+!tailwind.config.ts
+!postcss.config.mjs
+
+# Configuration files with secrets
+.env
+.env.local
+.env.production
+*.key
+*.pem
+*firebase*.json
+*Firestore*.json
+
+# Model files
+*.h5
+*.pkl
+*.pth
+*.pt
+*.onnx
+*.pb
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+ENV/
+
+# Build outputs
+.next/
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Media files (keep structure, exclude actual files)
+*.mp4
+*.avi
+*.mov
+*.wav
+*.mp3
+*.jpg
+*.jpeg
+*.png
+!screenshots/*.png
+!screenshots/*.jpg
+
+# Data files
+*.csv
+*.xlsx
+*.db
+*.sqlite
+
+# Documentation that might contain sensitive info
+*_KEY*
+*SECRET*
+*PASSWORD*
